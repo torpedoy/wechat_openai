@@ -1,0 +1,2 @@
+# wechat_openai
+微信公众号对接openai接口chatgpt
