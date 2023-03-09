@@ -1,6 +1,8 @@
 import hashlib
+import os
 from os import abort
 
+from dotenv import load_dotenv
 from flask import Flask, request
 from flask_cors import CORS
 from werobot.contrib.flask import make_view
