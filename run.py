@@ -1,8 +1,3 @@
-import hashlib
-import os
-from os import abort
-
-from dotenv import load_dotenv
 from flask import Flask, request
 from flask_cors import CORS
 from werobot.contrib.flask import make_view
@@ -18,6 +13,10 @@ app.add_url_rule(
     view_func=make_view(robot),
     methods=['GET', 'POST']
 )
+
+@app.route('/')
+def hello_world():
+    return "111"
 
 if __name__ == '__main__':
     app.run(

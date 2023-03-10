@@ -3,7 +3,7 @@ import openai
 
 from config import config
 
-openai.api_key = os.getenv('OPENAI_API_KEY')
+openai.api_key = config.OPENAI_API_KEY
 
 def completion_turbo(messages):
     response = openai.ChatCompletion.create(

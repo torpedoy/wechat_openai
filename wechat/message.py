@@ -1,14 +1,16 @@
 import os
 
 from werobot import WeRoBot
+
+from config import config
 from openai_bot import api
 
 robot = WeRoBot(
-    token = os.getenv('WECHAT_TOKEN')
+    token = config.WECHAT_TOKEN
 )
-robot.config["APP_ID"] = os.getenv('WECHAT_APP_ID')
-robot.config["APP_SECRET"] = os.getenv('WECHAT_APP_SECRET')
-robot.config["ENCODING_AES_KEY"] = os.getenv('WECHAT_ENCODING_AES_KEY')
+robot.config["APP_ID"] = config.WECHAT_APP_ID
+robot.config["APP_SECRET"] = config.WECHAT_APP_SECRET
+robot.config["ENCODING_AES_KEY"] = config.WECHAT_ENCODING_AES_KEY
 
 @robot.subscribe
 def subscribe(message):
