@@ -1,4 +1,5 @@
 import os
+from flask import session
 
 from werobot import WeRoBot
 
@@ -23,12 +24,20 @@ def text(message):
     new_messages = _generate_messages(msg, openid, "user")
     replay = api.completion_turbo(new_messages)
     replay_save = _generate_messages(replay, openid)
-    return replay
+    # 异步队列处理消息
+    _save_messages(replay_save)
+    return "思考中，请稍后..."
+
 
 
 def _generate_messages(message, openid, chat_mode="system"):
     new_message_data = {"role":chat_mode,"content":message}
-    messages = []
+    #存进session
+    messages = session.get(openid, [])
     messages.append(new_message_data)
-
+    session[openid] = messages
     return messages
+
+def _save_messages(messages):
+    # 异步队列处理消息
+    pass
