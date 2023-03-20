@@ -2,7 +2,7 @@
 FROM python:3.8-slim
 
 # 安装Redis客户端和相关依赖
-RUN apt-get update && apt-get install -y redis-tools
+RUN apt-get update && apt-get install -y redis-server
 
 # 安装Python依赖
 COPY . /app
